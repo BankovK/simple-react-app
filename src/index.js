@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+const useState = React.useState
+
 const pets = [
     { name: "Meowsalot", species: "cat", age: "5", id: 123456789 },
     { name: "Barksalot", species: "dog", age: "3", id: 987654321 },
@@ -10,7 +12,7 @@ const pets = [
     { name: "Paws", species: "dog", age: "6", id: 789789789 }
 ]
 
-function Section1Unit6App() {
+function Section1Unit7App() {
     return (
         <>
             <Header />
@@ -30,7 +32,14 @@ function Header() {
 }
 
 function Time() {
-    return <p>The current time is {new Date().toLocaleString()}.</p>
+    const [time, setTime] = useState(new Date().toLocaleString())
+
+    setTimeout(
+        () => setTime(new Date().toLocaleString()),
+        1000
+    )
+
+    return <p>The current time is {time}.</p>
 }
 
 function Pet(props) {
@@ -41,6 +50,4 @@ function Footer() {
     return <small>Footer Text</small>
 }
 
-setInterval(() => {
-    ReactDOM.render(<Section1Unit6App />, document.getElementById('root'))
-}, 1000);
+ReactDOM.render(<Section1Unit7App />, document.getElementById('root'))
