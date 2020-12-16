@@ -12,10 +12,11 @@ const pets = [
     { name: "Paws", species: "dog", age: "6", id: 789789789 }
 ]
 
-function Section1Unit7App() {
+function Section1Unit8App() {
     return (
         <>
             <Header />
+            <LikeClicker />
             <Time />
             <ul>
                 {pets.map(
@@ -29,6 +30,26 @@ function Section1Unit7App() {
 
 function Header() {
     return <h1 className="special">Application Header</h1>
+}
+
+function LikeClicker() {
+    const [likeCount, setLikeCount] = useState(0)
+
+    function increaseLikeCountHandler() {
+        setLikeCount( prev => prev + 1 )
+    }
+
+    function decreaseLikeCountHandler() {
+        setLikeCount( prev => prev === 0 ? 0 : (prev - 1) )
+    }
+
+    return (
+        <>
+            <button onClick={increaseLikeCountHandler}>+</button>
+            <button onClick={decreaseLikeCountHandler}>-</button>
+            <h2>{likeCount} likes.</h2>
+        </>
+    )
 }
 
 function Time() {
@@ -50,4 +71,4 @@ function Footer() {
     return <small>Footer Text</small>
 }
 
-ReactDOM.render(<Section1Unit7App />, document.getElementById('root'))
+ReactDOM.render(<Section1Unit8App />, document.getElementById('root'))
