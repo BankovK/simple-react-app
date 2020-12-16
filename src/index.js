@@ -2,15 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Section1Unit5App() {
+const pets = [
+    { name: "Meowsalot", species: "cat", age: "5", id: 123456789 },
+    { name: "Barksalot", species: "dog", age: "3", id: 987654321 },
+    { name: "Fluffy", species: "rabbit", age: "2", id: 123123123 },
+    { name: "Purrsloud", species: "cat", age: "1", id: 456456456 },
+    { name: "Paws", species: "dog", age: "6", id: 789789789 }
+]
+
+function Section1Unit6App() {
     return (
         <>
             <Header />
             <Time />
             <ul>
-                <Pet name="Fluffy" species="dog" age="3"/>
-                <Pet name="Cutter" species="cat" age="1"/>
-                <Pet name="Yago" species="parrot" age="10"/>
+                {pets.map(
+                    pet => <Pet name={pet.name} species={pet.species} age={pet.age} key={pet.id}/>
+                )}
             </ul>
             <Footer />
         </>
@@ -34,5 +42,5 @@ function Footer() {
 }
 
 setInterval(() => {
-    ReactDOM.render(<Section1Unit5App />, document.getElementById('root'))
+    ReactDOM.render(<Section1Unit6App />, document.getElementById('root'))
 }, 1000);
